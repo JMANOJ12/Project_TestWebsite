@@ -3,7 +3,7 @@ CREATE DATABASE OnlineShopping;
 
 
 CREATE TABLE Customer (
-	CustomerID int NOT NULL PRIMARY KEY, 
+	customerID int NOT NULL PRIMARY KEY, 
 	firstName varchar(50), 
 	lastName varchar(50), 
 	phoneNumber VARCHAR(15), 
@@ -16,3 +16,26 @@ CREATE TABLE Customer (
 
 );
 
+CREATE TABLE Products (
+	productID INT PRIMARY KEY, 
+	productName VARCHAR(50), 
+	productDesc TEXT, 
+	productPrice DECIMAL(10,2) NOT NULL, 
+	productStock INT,
+	category VARCHAR(100),
+	imageURL VARCHAR(255),
+	
+)
+
+
+CREATE TABLE Orders (
+	orderID INT PRIMARY KEY, 
+	customerID INT,
+	orderDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+	totalAmount Decimal(10,2), 
+	Status VARCHAR(50), 
+	FOREIGN KEY (customerID) REFERENCES Customer(customerID)
+
+
+
+);
